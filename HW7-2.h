@@ -5,6 +5,7 @@ namespace mpcs51044 {
     // This is a template declaration for my_async that specifies a function type Func and a variadic list of arguments Args
     template<typename Func, typename ...Args>
     auto my_async(Func f, Args... args) {
+        // we're using a lambda function to create a callable object with no arguments that packaged_task can call
         std::packaged_task task([f, args...]() {
             return f(args...);
         });
